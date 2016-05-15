@@ -1,6 +1,6 @@
 {
   "name": "boar-ng-common",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Common Emarsys UI AngularJS components",
   "main": "./distribution/index.js",
   "scripts": {
