@@ -1,5 +1,21 @@
 'use strict';
 
+let templateHtml = `
+<div class="e-pagination">
+  <a class="e-pagination__item e-pagination__item-prev e-pagination__item-disabled" ng-click="ctrl.action(ctrl.prev.page)" ng-class="{'e-pagination__item-disabled': ctrl.prev.disabled}">
+    <svg class="e-icon"><use xlink:href="#caret-left"></use></svg>
+  </a>
+  <a class="e-pagination__item" ng-repeat="item in ctrl.list" ng-class="{'e-pagination__item-active': item.active, 'e-pagination__item-disabled': item.disabled}" ng-click="ctrl.action(item.page)">
+    {{item.value}}
+  </a>
+  <a class="e-pagination__item e-pagination__item-next" ng-click="ctrl.action(ctrl.next.page)" ng-class="{'e-pagination__item-disabled': ctrl.next.disabled}">
+    <svg class="e-icon">
+      <use xlink:href="#caret-right"></use>
+    </svg>
+  </a>
+</div>
+`;
+
 class PagerController {
 
   constructor($scope) {
@@ -10,7 +26,7 @@ class PagerController {
 
   static create() {
     return () => ({
-      template: require('./index.jade'),
+      template: templateHtml,
       restrict: 'AE',
       scope: {
         page: '=',
