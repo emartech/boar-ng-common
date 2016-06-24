@@ -41,7 +41,7 @@ let templateHtml = `
     </tbody>
     <tfoot>
       <tr>
-        <td colspan="{{table.columnCount}}">
+        <td colspan="{{table.columnCount}}" ng-if="table.showPager">
           <div class="float-left">
             {{ 'Show' | translate }} &nbsp;
             <select class="e-select e-select-inline e-select__select2 e-select-small" ng-model="table.pager.limit" ng-options="option for option in table.pager.options track by option"></select>
@@ -70,6 +70,7 @@ class TableController {
     this.buttons = [];
     this.columnCount = 1;
     this.showSearch = typeof $attrs.showSearch !== 'undefined';
+    this.showPager = false;
 
     this.order = {
       field: $attrs.defaultSortField,
@@ -78,6 +79,7 @@ class TableController {
 
     this.pager = {
       page: 1,
+      limit: 100,
       options: []
     };
 
@@ -112,6 +114,7 @@ class TableController {
   }
 
   initPager(params) {
+    this.showPager = true;
     this.pager.limit = params.limit;
     this.pager.options = params.options;
   }
