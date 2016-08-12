@@ -39,9 +39,9 @@ let templateHtml = `
         </td>
       </tr>
     </tbody>
-    <tfoot>
+    <tfoot ng-if="table.showPager">
       <tr>
-        <td colspan="{{table.columnCount}}" ng-if="table.showPager">
+        <td colspan="{{table.columnCount}}">
           <div class="float-left">
             {{ 'Show' | translate }} &nbsp;
             <select class="e-select e-select-inline e-select__select2 e-select-small" ng-model="table.pager.limit" ng-options="option for option in table.pager.options track by option"></select>
